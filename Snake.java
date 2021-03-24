@@ -10,9 +10,13 @@ public class Snake
          {
             	int playerPosition = 0, dicevalue = 0;
             	int playerDiceCount = 0;
+		int currentPlayer = -1;
+		int player2Position = 0, player2DiceCount = 0;
                 while (true)
                {
                 dicevalue = RollDie();
+		if(currentPlayer == -1)
+		{
                 playerDiceCount++;
                 playerPosition = CalculatePlayerPosition(playerPosition, dicevalue);
                 System.out.println("Player position" + playerPosition);
@@ -23,6 +27,34 @@ public class Snake
                     break;
                 }
             }
+	       else
+		{
+			player2DiceCount++;
+			player2Position = CalculatePlayerPosition(player2Position, dicevalue);
+			System.println("Player2position" + player2Position);
+                    	if (player2Position == WIN_POINT)
+                    {
+                        System.out.println("player 2 Wins");
+                        System.out.println("Die rolled " + player2DiceCount+ " times to win");
+                        break;
+		    }
+		}
+		currentPlayer = -(currentPlayer);
+		}
+	
+
+		public void DiceCountAndPosition(int dicecount, int playerPosition,int dicevalue,int number)
+	        {
+        	    	dicecount++;
+            		playerPosition = CalculatePlayerPosition(playerPosition, dicevalue);
+            		System.out.println("player" + number + " position" + playerPosition);
+            		if (playerPosition == WIN_POINT)
+            		{
+                		System.out.println("Player" + number + "wins");
+                		System.out.println("Die rolled" + dicecount + "times to wins");
+                
+            		}
+        	}
 
 		int Dice = 6;
 		int roll = (int) (Math.random() * Dice) + 1;
