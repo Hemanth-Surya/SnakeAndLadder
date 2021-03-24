@@ -3,6 +3,7 @@ public class Snake
 {
 	public static void main(String[] args)
 	{
+		int WIN_POINT = 100;
 		int playerPosition = 0;
 		int Dice = 6;
 		int roll = (int) (Math.random() * Dice) + 1;
@@ -29,6 +30,10 @@ public class Snake
 			System.out.println("Snake");
 			player = player - diceValue;
 			break;
+		}
+		if(player < 0);
+		{
+			player = 0;
 		}
 		return player;
 	}
